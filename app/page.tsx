@@ -1,4 +1,12 @@
-export default function Home() {
+async function getProjects() {
+  const res = await fetch("https://portfolio-backend-5i8c.onrender.com/projects", { cache: "no-store" });
+  const data = await res.json();
+  return data;
+}
+
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
 
@@ -12,16 +20,12 @@ export default function Home() {
             <li><a href="#projects" className="hover:text-emerald-400 transition cursor-pointer">Projects</a></li>
             <li><a href="#contact" className="hover:text-emerald-400 transition cursor-pointer">Contact</a></li>
           </ul>
-           
-          <a  href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-2 rounded-md text-sm transition font-medium"
-          >
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-2 rounded-md text-sm transition font-medium">
             Resume
           </a>
         </div>
       </nav>
+
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-12 md:py-28 flex flex-col justify-center min-h-[70vh]">
         <p className="text-emerald-400 font-mono text-sm sm:text-base mb-3 tracking-wide">Hi, my name is</p>
@@ -68,47 +72,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS */}
+      {/* PROJECTS — now from the database */}
       <section id="projects" className="max-w-6xl mx-auto px-6 py-20 border-t border-slate-900">
         <h2 className="text-2xl font-bold mb-10 flex items-center gap-3">
           <span className="text-emerald-400 font-mono text-lg">03.</span> Academic Projects
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-slate-900/30 border border-slate-800 rounded-lg p-6 hover:border-emerald-500/30 transition flex flex-col justify-between shadow-sm">
-            <div>
-              <h3 className="text-xl font-semibold text-slate-100 mb-2">Automatic Timetable Generation</h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                A web system that automatically generates class timetables based on
-                subjects, teachers, teaching hours, and availability.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {["PHP", "MySQL", "HTML", "CSS", "JavaScript"].map((t) => (
-                  <span key={t} className="text-xs font-mono text-emerald-400 bg-emerald-950/20 px-2 py-0.5 rounded border border-emerald-900/30">{t}</span>
-                ))}
+          {projects.map((project: any) => (
+            <div key={project.id} className="bg-slate-900/30 border border-slate-800 rounded-lg p-6 hover:border-emerald-500/30 transition flex flex-col justify-between shadow-sm">
+              <div>
+                <h3 className="text-xl font-semibold text-slate-100 mb-2">{project.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech_stack.split(", ").map((t: string) => (
+                    <span key={t} className="text-xs font-mono text-emerald-400 bg-emerald-950/20 px-2 py-0.5 rounded border border-emerald-900/30">{t}</span>
+                  ))}
+                </div>
               </div>
+              <a href={project.github_link} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-400 hover:text-emerald-400 transition inline-flex items-center gap-1 mt-auto">
+                View Code
+              </a>
             </div>
-            <a href="https://github.com/rejothomas1/automatic-timetable-generator" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-400 hover:text-emerald-400 transition inline-flex items-center gap-1 mt-auto">
-              View Code
-            </a>
-          </div>
-
-          <div className="bg-slate-900/30 border border-slate-800 rounded-lg p-6 hover:border-emerald-500/30 transition flex flex-col justify-between shadow-sm">
-            <div>
-              <h3 className="text-xl font-semibold text-slate-100 mb-2">Cricket Match Prediction System</h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                A machine-learning and data-analysis project (IPL Cricket ML Analysis)
-                that predicts cricket match outcomes using historical performance data.
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {["Python", "Machine Learning", "Data Analysis"].map((t) => (
-                  <span key={t} className="text-xs font-mono text-emerald-400 bg-emerald-950/20 px-2 py-0.5 rounded border border-emerald-900/30">{t}</span>
-                ))}
-              </div>
-            </div>
-            <a href="https://github.com/rejothomas1/IPL-Cricket-ML-Analysis" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-400 hover:text-emerald-400 transition inline-flex items-center gap-1 mt-auto">
-              View Code
-            </a>
-          </div>
+          ))}
         </div>
       </section>
 
