@@ -2,106 +2,168 @@ import ProjectsSection from "./components/ProjectsSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
+    <main className="min-h-screen bg-background text-foreground font-sans antialiased selection:bg-accent-15">
 
-      {/* NAVIGATION */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-900">
-        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-          <span className="text-xl font-bold tracking-wider text-emerald-400 font-mono">{"<RejoThomas />"}</span>
-          <ul className="hidden md:flex gap-8 text-sm font-medium text-slate-400">
-            <li><a href="#about" className="hover:text-emerald-400 transition cursor-pointer">About</a></li>
-            <li><a href="#skills" className="hover:text-emerald-400 transition cursor-pointer">Skills</a></li>
-            <li><a href="#projects" className="hover:text-emerald-400 transition cursor-pointer">Projects</a></li>
-            <li><a href="#contact" className="hover:text-emerald-400 transition cursor-pointer">Contact</a></li>
-          </ul>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-2 rounded-md text-sm transition font-medium">
-            Resume
-          </a>
+      {/* NAV */}
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-bg-90 border-b border-line">
+        <div className="max-w-5xl mx-auto flex justify-between items-center px-6 py-5">
+          <span className="font-serif text-lg text-foreground">
+            Rejo Thomas<span className="text-accent">.</span>
+          </span>
+          <div className="flex items-center gap-8">
+            <ul className="hidden md:flex gap-7 font-mono text-sm text-muted">
+              <li><a href="#about" className="hover:text-foreground transition">about</a></li>
+              <li><a href="#skills" className="hover:text-foreground transition">skills</a></li>
+              <li><a href="#projects" className="hover:text-foreground transition">projects</a></li>
+              <li><a href="#contact" className="hover:text-foreground transition">contact</a></li>
+            </ul>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-sm border border-line px-4 py-1.5 text-foreground hover:border-accent hover:text-accent transition"
+            >
+              resume
+            </a>
+          </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-12 md:py-28 flex flex-col justify-center min-h-[70vh]">
-        <p className="text-emerald-400 font-mono text-sm sm:text-base mb-3 tracking-wide">Hi, my name is</p>
-        <h1 className="text-4xl sm:text-6xl font-bold text-slate-100 mb-2">Rejo Thomas.</h1>
-        <h2 className="text-3xl sm:text-5xl font-bold text-slate-500 mb-6">MCA Student & Developer.</h2>
-        <p className="text-slate-400 max-w-xl leading-relaxed mb-8">
-          I&apos;m a Master of Computer Applications student building full-stack
-          applications and exploring machine learning. I enjoy turning ideas
-          into working software.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <a href="#projects" className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-md transition shadow-md shadow-emerald-500/10">
-            View My Work
-          </a>
-          <a href="#contact" className="border border-slate-800 hover:border-emerald-500/40 text-slate-300 hover:text-emerald-400 px-6 py-3 rounded-md transition">
-            Get In Touch
-          </a>
+      <section className="border-b border-line">
+        <div className="max-w-5xl mx-auto px-6 py-24 grid md:grid-cols-[1.4fr_1fr] gap-12 items-start hero-in">
+          <div>
+            <h1 className="font-serif text-4xl sm:text-5xl leading-tight text-foreground">
+              I build software that organizes and predicts.
+            </h1>
+            <p className="mt-6 text-muted max-w-md leading-relaxed">
+              I&apos;m Rejo Thomas, an MCA student. Recent work includes a scheduling
+              system that removes manual timetable conflicts, and a machine learning
+              model that studies cricket match outcomes.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="bg-accent text-[#0F2438] font-medium px-5 py-2.5 hover:opacity-90 transition"
+              >
+                See the projects
+              </a>
+              <a
+                href="mailto:rejothomas538@gmail.com"
+                className="border border-line text-foreground px-5 py-2.5 hover:border-accent2 hover:text-accent2 transition"
+              >
+                Email me
+              </a>
+            </div>
+          </div>
+
+          <div className="border border-line bg-panel-60 p-6 font-mono text-sm space-y-4">
+            <div>
+              <p className="text-muted mb-1">Role</p>
+              <p className="text-foreground">MCA Student &amp; Developer</p>
+            </div>
+            <div>
+              <p className="text-muted mb-1">Focus</p>
+              <p className="text-foreground">Full-stack development, ML</p>
+            </div>
+            <div>
+              <p className="text-muted mb-1">Status</p>
+              <p className="text-accent2 flex items-center gap-2">
+                <span className="cursor-blink">●</span> Open to opportunities
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-20 border-t border-slate-900">
-        <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-          <span className="text-emerald-400 font-mono text-lg">01.</span> About Me
-        </h2>
-        <p className="text-slate-400 leading-relaxed max-w-3xl">
-          I&apos;m currently pursuing my Master of Computer Applications (MCA), focused
-          on building practical, real-world software. My project work spans full-stack
-          web development and machine learning.
-        </p>
-      </section>
-
-      {/* SKILLS */}
-      <section id="skills" className="max-w-6xl mx-auto px-6 py-20 border-t border-slate-900">
-        <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-          <span className="text-emerald-400 font-mono text-lg">02.</span> Technical Skills
-        </h2>
-        <div className="flex flex-wrap gap-3">
-          {["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Python", "Machine Learning", "Data Analysis"].map((skill) => (
-            <span key={skill} className="bg-slate-900/60 border border-slate-800/80 text-slate-300 px-4 py-2 rounded-md text-sm font-mono shadow-sm">
-              {skill}
-            </span>
-          ))}
+      <section id="about" className="border-b border-line">
+        <div className="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-[200px_1fr] gap-10">
+          <h2 className="font-serif text-2xl text-foreground">About</h2>
+          <p className="text-muted leading-relaxed max-w-2xl">
+            I&apos;m pursuing a Master of Computer Applications, focused on building
+            complete, working systems rather than isolated exercises. My timetable
+            generator replaced a manual scheduling process with automatic
+            conflict-checking across subjects, teachers, and available hours. My
+            cricket prediction project applies data analysis and machine learning
+            to historical match data to model likely outcomes. This portfolio
+            itself is a full-stack application, with a Python backend and a real
+            database serving the content you&apos;re reading right now.
+          </p>
         </div>
       </section>
 
-      {/* PROJECTS — now a separate client component with loading state */}
-      <section id="projects" className="max-w-6xl mx-auto px-6 py-20 border-t border-slate-900">
-        <h2 className="text-2xl font-bold mb-10 flex items-center gap-3">
-          <span className="text-emerald-400 font-mono text-lg">03.</span> Academic Projects
-        </h2>
-        <ProjectsSection />
+      {/* SKILLS */}
+      <section id="skills" className="border-b border-line">
+        <div className="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-[200px_1fr] gap-10">
+          <h2 className="font-serif text-2xl text-foreground">Skills</h2>
+          <div className="space-y-5 max-w-2xl">
+            <div>
+              <p className="font-mono text-xs text-muted mb-1">Languages</p>
+              <p className="text-foreground">HTML, CSS, JavaScript, PHP, Python</p>
+            </div>
+            <div>
+              <p className="font-mono text-xs text-muted mb-1">Data &amp; Database</p>
+              <p className="text-foreground">MySQL, Data Analysis</p>
+            </div>
+            <div>
+              <p className="font-mono text-xs text-muted mb-1">Applied</p>
+              <p className="text-foreground">Machine Learning</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects" className="border-b border-line">
+        <div className="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-[200px_1fr] gap-10">
+          <h2 className="font-serif text-2xl text-foreground">Projects</h2>
+          <div className="max-w-2xl">
+            <ProjectsSection />
+          </div>
+        </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="max-w-6xl mx-auto px-6 py-24 border-t border-slate-900 text-center">
-        <p className="text-emerald-400 font-mono mb-3">04. What&apos;s Next?</p>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Get In Touch</h2>
-        <p className="text-slate-400 max-w-md mx-auto mb-8 leading-relaxed text-sm sm:text-base">
-          I&apos;m open to new internship opportunities and technical collaborations.
-        </p>
-        <a href="mailto:rejothomas538@gmail.com" className="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-3 rounded-md transition shadow-md shadow-emerald-500/10">
-          Say Hello
-        </a>
-        <div className="flex justify-center gap-6 mt-10 text-slate-500 text-sm font-mono">
-          <a href="https://github.com/rejothomas1" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition">GitHub</a>
-          <a href="https://linkedin.com/in/rejo-thomas11" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition">LinkedIn</a>
-          <a href="mailto:rejothomas538@gmail.com" className="hover:text-emerald-400 transition">Email</a>
+      <section id="contact">
+        <div className="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-[200px_1fr] gap-10">
+          <h2 className="font-serif text-2xl text-foreground">Contact</h2>
+          <div className="max-w-2xl">
+            <p className="text-muted leading-relaxed mb-6">
+              I&apos;m open to internships and entry-level roles in software
+              development. The fastest way to reach me is by email.
+            </p>
+            <ul className="font-mono text-sm space-y-2 mb-8">
+              <li>
+                <a href="mailto:rejothomas538@gmail.com" className="text-accent2 hover:text-accent transition">
+                  rejothomas538@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/rejothomas1" target="_blank" rel="noopener noreferrer" className="text-accent2 hover:text-accent transition">
+                  github.com/rejothomas1
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/rejo-thomas11" target="_blank" rel="noopener noreferrer" className="text-accent2 hover:text-accent transition">
+                  linkedin.com/in/rejo-thomas11
+                </a>
+              </li>
+            </ul>
+            <a
+              href="mailto:rejothomas538@gmail.com"
+              className="inline-block bg-accent text-[#0F2438] font-medium px-6 py-2.5 hover:opacity-90 transition"
+            >
+              Say hello
+            </a>
+          </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-12 px-6 mt-12">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p className="font-mono text-xs text-center sm:text-left">
-            © 2026 Rejo Thomas.
-          </p>
-          <div className="flex gap-6 font-mono text-xs">
-            <a href="https://github.com/rejothomas1" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition">GitHub Profile</a>
-            <a href="https://linkedin.com/in/rejo-thomas11" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition">LinkedIn Profile</a>
-            <a href="mailto:rejothomas538@gmail.com" className="hover:text-emerald-400 transition">Contact Email</a>
-          </div>
+      <footer className="border-t border-line">
+        <div className="max-w-5xl mx-auto px-6 py-8 font-mono text-xs text-muted">
+          © 2026 Rejo Thomas — built with Next.js, FastAPI, and a live database.
         </div>
       </footer>
 
